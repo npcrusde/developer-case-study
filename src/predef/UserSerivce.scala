@@ -1,14 +1,25 @@
 import predef.*
 import java.time.LocalDateTime
 
+// TODO: this types are to be adjusted depends on the implementation
+type assignBenefitResult = Unit
+type ScheduleBenefitAssigningResult = Unit
+
+enum GetUsersFilter {
+  case HAS_BENEFITS, HAS_OR_WILL_HAVE_BENEFITS, HAD_BENEFITS
+}
+
 trait UserService[F[_]] {
-  def getUsers(): F[Seq[User]]
+  def getUsers(filter: GetUsersFilter): F[Seq[User]]
 
-  def assignLicence(users: Set[UserId], benefit: Benefit): F[Unit]
+  def assignBenefit(
+      users: Set[UserId],
+      benefit: Benefit
+  ): F[assignBenefitResult]
 
-  def scheduleLicence(
+  def scheduleBenefitAssigning(
       users: Set[UserId],
       benefit: Benefit,
       at: LocalDateTime
-  ): F[Unit]
+  ): F[ScheduleBenefitAssigningResult]
 }
