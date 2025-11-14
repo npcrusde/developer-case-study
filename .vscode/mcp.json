@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "senior-dev-task-metals": {
+      "url": "http://localhost:58014/sse",
+      "type": "sse"
+    }
+  }
+}
