@@ -1,4 +1,5 @@
-import predef.*
+package predef
+
 import java.time.LocalDateTime
 
 enum GetUsersFilter {
